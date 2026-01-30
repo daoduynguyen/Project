@@ -1,0 +1,306 @@
+/* ==========================================================================
+   1. ĐỊNH DẠNG CHUNG (CORE - DARK MODE)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #0dcaf0;       /* Xanh Cyan */
+    --primary-hover: #0baccc;
+    --bg-dark: #000000;       /* Nền đen tuyền */
+    --bg-card: #1a1d21;       /* Nền card xám đen */
+    --text-main: #ffffff;     /* Chữ trắng */
+    --text-muted: #b0b0b0;    /* Chữ xám */
+    --border-color: #2d3238;  /* Viền xám tối */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif; 
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Fix bố cục chung */
+.section-padding { padding-top: 60px; padding-bottom: 60px; }
+.container-custom { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+/* ==========================================================================
+   2. NAVBAR (MENU ĐỒNG BỘ - 4 NÚT GIỐNG NHAU)
+   ========================================================================== */
+.navbar {
+    z-index: 9999 !important;
+    background-color: rgba(0, 0, 0, 0.95) !important; /* Đen mờ nhẹ */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-main) !important;
+    text-transform: uppercase;
+}
+
+/* Style đồng bộ cho 4 mục menu */
+.navbar-nav .nav-link {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+    padding: 10px 18px !important;
+    margin: 0 2px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent; /* Giữ chỗ cho viền */
+}
+
+/* Hiệu ứng Hover & Active (Xanh Cyan) */
+.navbar-nav .nav-link:hover, 
+.navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+    background-color: rgba(13, 202, 240, 0.1);
+    border-color: rgba(13, 202, 240, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Reset nút CTA (nếu có lỡ dùng) về dạng thường */
+.nav-btn-cta {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================
+   3. HỒ SƠ & CARD (GIAO DIỆN KHỐI TỐI)
+   ========================================================================== */
+.profile-content, 
+.card, 
+.checkout-left .card {
+    background-color: var(--bg-card) !important; 
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 30px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+/* Tiêu đề trong Card */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {
+    color: var(--text-main) !important;
+    font-weight: 700;
+}
+.text-info { color: var(--primary) !important; text-shadow: 0 0 10px rgba(13, 202, 240, 0.3); }
+
+/* ==========================================================================
+   4. FORM ELEMENTS (INPUT TỐI)
+   ========================================================================== */
+.form-label {
+    color: var(--text-main) !important; 
+    font-weight: 700 !important;
+    margin-bottom: 10px !important;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control, .form-select {
+    background-color: #111315 !important;
+    border: 1px solid #3f444a !important;
+    color: #ffffff !important;
+    padding: 12px 18px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(13, 202, 240, 0.2) !important;
+    background-color: #111315 !important;
+}
+
+.form-control::placeholder { color: #6c757d !important; opacity: 1; }
+
+/* ==========================================================================
+   5. VÉ & VOUCHER (STYLE DARK)
+   ========================================================================== */
+.voucher-ticket {
+    display: flex; 
+    height: 140px; 
+    margin-bottom: 24px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+.voucher-ticket:hover { 
+    transform: translateY(-5px); 
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.15);
+}
+
+/* Cột trái (Màu xanh) */
+.voucher-left {
+    flex: 0 0 150px;
+    background: linear-gradient(135deg, #0dcaf0, #0d6efd);
+    color: #000; /* Chữ đen trên nền xanh cho dễ đọc */
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border-right: 2px dashed #000;
+}
+
+/* Cột phải (Thông tin) */
+.voucher-right {
+    flex: 1; 
+    padding: 15px 25px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--text-main);
+}
+
+/* --- VÉ BẢO TRÌ (XÁM XỊT) --- */
+.ticket-maintenance {
+    background-color: #0f0f0f !important;
+    border: 1px dashed #333 !important;
+    opacity: 0.6;
+    pointer-events: none;
+    filter: grayscale(100%); /* Chuyển sang đen trắng */
+}
+.ticket-maintenance .voucher-left {
+    background: #333 !important;
+    color: #888 !important;
+}
+
+/* ==========================================================================
+   6. ADMIN SIDEBAR (GIAO DIỆN QUẢN TRỊ)
+   ========================================================================== */
+body.admin-body { background-color: #121212; }
+
+.sidebar-container {
+    background: #0f0f0f;
+    border-right: 1px solid #2d2d2d;
+    min-height: 100vh;
+    width: 280px;
+    display: flex; flex-direction: column;
+    position: sticky; top: 0;
+}
+
+.sidebar-brand h3 { color: var(--text-main); text-transform: uppercase; margin: 20px 0; text-align: center; }
+
+.sidebar-container .nav-link {
+    color: #a0a0a0 !important;
+    padding: 12px 24px !important;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+.sidebar-container .nav-link:hover, 
+.sidebar-container .nav-link.active {
+    color: var(--primary) !important;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--primary);
+}
+
+/* ==========================================================================
+   7. PHÂN TRANG (PAGINATION) - FIX CHO DARK MODE
+   ========================================================================== */
+.page-link {
+    background-color: #1a1d21 !important;
+    border-color: #333 !important;
+    color: #fff !important;
+}
+.page-item.active .page-link {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #000 !important; /* Chữ đen trên nền xanh */
+    font-weight: bold;
+}
+.page-item.disabled .page-link {
+    background-color: #000 !important;
+    color: #555 !important;
+}
+
+/* ==========================================================================
+   8. HOVER DROPDOWN & UTILS
+   ========================================================================== */
+@media (min-width: 992px) {
+    .navbar-nav .dropdown:hover .dropdown-menu {
+        display: block; margin-top: 0; animation: slideUp 0.3s ease;
+    }
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-menu {
+    background-color: #1e293b;
+    border: 1px solid #333;
+}
+.dropdown-item { color: #cbd5e1; padding: 8px 20px; }
+.dropdown-item:hover {
+    background-color: rgba(13, 202, 240, 0.1);
+    color: var(--primary);
+}
+.dropdown-divider { border-top-color: #333; }
+
+/* Nút bấm (Buttons) */
+.btn-info, .btn-primary {
+    background-color: var(--primary) !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: 800 !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+.btn-info:hover, .btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.4);
+}
+
+/* Override bắt buộc để xóa nền trắng của Bootstrap */
+.bg-white, .bg-light, .bg-secondary {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+}
+.text-dark { color: var(--text-main) !important; }
+
+/* ==========================================================================
+   STYLE CHO VÉ BẢO TRÌ (GIAO DIỆN DARK MODE)
+   ========================================================================== */
+
+/* 1. Tổng thể Card: Tối thui và viền nét đứt */
+.card-maintenance {
+    background-color: #080808 !important; /* Nền gần như đen tuyệt đối */
+    border: 2px dashed #333 !important;   /* Viền nét đứt cảnh báo */
+    position: relative; /* Để căn chỉnh cái tem bảo trì */
+    overflow: hidden;
+}
+
+/* 2. Ảnh game: Chuyển trắng đen & Mờ đi */
+.card-maintenance img {
+    filter: grayscale(100%); /* Mất màu */
+    opacity: 0.3;            /* Mờ tịt */
+    transition: none;        /* Tắt hiệu ứng zoom khi hover */
+}
+
+/* 3. TEM "BẢO TRÌ" (QUAN TRỌNG NHẤT) */
+.maintenance-overlay {
+    position: absolute;
+    top: 40%;  /* Nằm đè lên vùng ảnh */
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg); /* Xoay nghiêng 15 độ */
+    
+    background-color: #dc3545; /* Đỏ rực */
+    color: #ffffff;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    padding: 8px 25px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 15px rgba(220, 53, 69, 0.6); /* Phát sáng nhẹ màu đỏ */
+    z-index: 10;
+    pointer-events: none; /* Bấm xuyên qua được */
+    white-space: nowrap;
+}
+
